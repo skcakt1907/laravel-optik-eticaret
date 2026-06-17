@@ -1,0 +1,117 @@
+/* ============================================================
+   VİZYON OPTİK — E-TİCARET EKLERİ (mağaza, ürün, sepet, checkout)
+   style.css üzerine biner; aynı :root değişkenlerini kullanır.
+   ============================================================ */
+
+/* sepet ikonu navbar */
+.nav-cart{position:relative;display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;color:var(--ink)!important;font-size:1.25rem;margin-left:.4rem;transition:.2s}
+.nav-cart:hover{background:var(--soft-2);color:var(--primary-text)!important}
+.nav-cart .badge{position:absolute;top:-2px;right:-2px;background:var(--accent);color:#fff;font-size:.62rem;font-weight:700;min-width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;padding:0 4px}
+
+/* ürün kartı */
+.product-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;height:100%;display:flex;flex-direction:column;transition:.3s;position:relative}
+.product-card:hover{transform:translateY(-6px);box-shadow:var(--shadow);border-color:transparent}
+.product-card .pc-img{position:relative;display:block;aspect-ratio:1/1;overflow:hidden;background:var(--soft)}
+.product-card .pc-img img{width:100%;height:100%;object-fit:cover;transition:.6s}
+.product-card:hover .pc-img img{transform:scale(1.06)}
+.product-card .pc-badge{position:absolute;top:.8rem;left:.8rem;background:var(--accent);color:#fff;font-size:.7rem;font-weight:700;padding:.28rem .7rem;border-radius:100px;letter-spacing:.3px}
+.product-card .pc-badge.out{background:var(--gray)}
+.product-card .pc-body{padding:1.2rem 1.3rem 1.4rem;display:flex;flex-direction:column;flex:1}
+.product-card .pc-brand{font-size:.72rem;text-transform:uppercase;letter-spacing:1px;color:var(--gray);font-weight:700;margin-bottom:.3rem}
+.product-card .pc-title{font-size:1rem;line-height:1.35;margin:0 0 .7rem;font-weight:700}
+.product-card .pc-title a{color:var(--ink)}
+.product-card .pc-title a:hover{color:var(--primary-text)}
+.product-card .pc-price{display:flex;align-items:baseline;gap:.5rem;margin-top:auto;margin-bottom:1rem}
+.product-card .pc-price .now{font-size:1.25rem;font-weight:800;color:var(--ink)}
+.product-card .pc-price .old{font-size:.92rem;color:var(--gray);text-decoration:line-through}
+.product-card .pc-add{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;background:var(--primary);color:var(--ink);border:none;border-radius:100px;padding:.7rem 1rem;font-weight:700;font-size:.9rem;width:100%;transition:.25s;cursor:pointer}
+.product-card .pc-add:hover{background:var(--primary-dark);color:#fff}
+.product-card .pc-add.disabled{background:var(--line);color:var(--gray);pointer-events:none}
+
+/* mağaza yan filtre */
+.shop-filter{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:1.5rem 1.6rem;position:sticky;top:90px}
+.shop-filter h5{font-size:.82rem;text-transform:uppercase;letter-spacing:1px;color:var(--ink);margin:0 0 1rem;font-weight:700}
+.shop-filter .f-list{list-style:none;padding:0;margin:0 0 1.6rem}
+.shop-filter .f-list a{display:flex;justify-content:space-between;align-items:center;padding:.55rem 0;color:var(--body);font-weight:600;font-size:.93rem;border-bottom:1px solid var(--line)}
+.shop-filter .f-list a:last-child{border-bottom:none}
+.shop-filter .f-list a.active,.shop-filter .f-list a:hover{color:var(--primary-text)}
+.shop-filter .f-list a span{font-size:.78rem;color:var(--gray);background:var(--soft);border-radius:100px;padding:.1rem .55rem}
+.shop-toolbar{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;margin-bottom:1.8rem}
+.shop-toolbar .count{color:var(--gray);font-size:.92rem}
+.shop-toolbar select{border:1px solid var(--line);border-radius:100px;padding:.55rem 1.1rem;font-size:.9rem;color:var(--ink);background:#fff}
+
+/* ürün detay */
+.pd-gallery{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--soft)}
+.pd-gallery img{width:100%;aspect-ratio:1/1;object-fit:cover}
+.pd-brand{color:var(--primary-text);font-weight:700;text-transform:uppercase;letter-spacing:1.5px;font-size:.78rem;margin-bottom:.6rem}
+.pd-title{font-size:clamp(1.6rem,3vw,2.2rem);margin-bottom:.4rem}
+.pd-price{display:flex;align-items:baseline;gap:.7rem;margin:1rem 0 1.4rem}
+.pd-price .now{font-size:2rem;font-weight:800;color:var(--ink)}
+.pd-price .old{font-size:1.1rem;color:var(--gray);text-decoration:line-through}
+.pd-price .save{background:var(--accent);color:#fff;font-size:.78rem;font-weight:700;padding:.25rem .7rem;border-radius:100px}
+.pd-stock{font-size:.9rem;font-weight:600;margin-bottom:1.4rem}
+.pd-stock.in{color:var(--primary-text)}
+.pd-stock.out{color:var(--accent)}
+.pd-attrs{list-style:none;padding:0;margin:1.4rem 0;border-top:1px solid var(--line)}
+.pd-attrs li{display:flex;justify-content:space-between;padding:.7rem 0;border-bottom:1px solid var(--line);font-size:.92rem}
+.pd-attrs li span:first-child{color:var(--gray)}
+.pd-attrs li span:last-child{color:var(--ink);font-weight:600}
+.qty-box{display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:100px;overflow:hidden}
+.qty-box button{width:42px;height:46px;border:none;background:#fff;color:var(--ink);font-size:1.2rem;cursor:pointer}
+.qty-box button:hover{background:var(--soft)}
+.qty-box input{width:50px;text-align:center;border:none;font-weight:700;color:var(--ink);font-size:1rem;background:transparent}
+.qty-box input:focus{outline:none}
+.pd-actions{display:flex;gap:.8rem;flex-wrap:wrap;align-items:center;margin-top:.5rem}
+
+/* sepet tablosu */
+.cart-table{width:100%;border-collapse:collapse}
+.cart-table th{text-align:left;font-size:.76rem;text-transform:uppercase;letter-spacing:1px;color:var(--gray);padding:.8rem;border-bottom:2px solid var(--line)}
+.cart-table td{padding:1rem .8rem;border-bottom:1px solid var(--line);vertical-align:middle}
+.cart-prod{display:flex;align-items:center;gap:1rem}
+.cart-prod img{width:74px;height:74px;object-fit:cover;border-radius:12px;border:1px solid var(--line)}
+.cart-prod strong{display:block;color:var(--ink);font-size:.97rem}
+.cart-prod small{color:var(--gray);font-size:.82rem}
+.cart-remove{color:var(--gray);font-size:1.1rem;background:none;border:none;cursor:pointer;transition:.2s}
+.cart-remove:hover{color:var(--accent)}
+.summary-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:1.8rem;position:sticky;top:90px}
+.summary-card h4{font-size:1.15rem;margin-bottom:1.3rem}
+.summary-row{display:flex;justify-content:space-between;padding:.55rem 0;font-size:.95rem;color:var(--body)}
+.summary-row.total{border-top:1px solid var(--line);margin-top:.6rem;padding-top:1rem;font-size:1.2rem;font-weight:800;color:var(--ink)}
+.summary-card .btn-orange{width:100%;margin-top:1.2rem}
+.free-ship-note{background:var(--soft-2);border-radius:12px;padding:.8rem 1rem;font-size:.85rem;color:var(--primary-dark);font-weight:600;margin-top:1rem;text-align:center}
+
+/* checkout */
+.checkout-section{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:1.8rem;margin-bottom:1.5rem}
+.checkout-section h4{font-size:1.1rem;margin-bottom:1.2rem;display:flex;align-items:center;gap:.6rem}
+.checkout-section h4 .step{width:30px;height:30px;border-radius:50%;background:var(--primary);color:var(--ink);display:inline-flex;align-items:center;justify-content:center;font-size:.9rem;flex-shrink:0}
+.pay-opt{display:flex;align-items:center;gap:.9rem;border:1.5px solid var(--line);border-radius:14px;padding:1rem 1.2rem;margin-bottom:.8rem;cursor:pointer;transition:.2s}
+.pay-opt:hover{border-color:var(--primary)}
+.pay-opt input{accent-color:var(--primary);width:18px;height:18px;flex-shrink:0}
+.pay-opt.active{border-color:var(--primary);background:var(--soft)}
+.pay-opt .ic{font-size:1.4rem;color:var(--primary-text)}
+.pay-opt strong{display:block;font-size:.96rem;color:var(--ink)}
+.pay-opt small{color:var(--gray);font-size:.83rem}
+
+/* hesabım */
+.account-nav{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:1rem;position:sticky;top:90px}
+.account-nav a{display:flex;align-items:center;gap:.7rem;padding:.8rem 1rem;border-radius:12px;color:var(--ink);font-weight:600;font-size:.93rem}
+.account-nav a.active,.account-nav a:hover{background:var(--soft);color:var(--primary-text)}
+.order-row{border:1px solid var(--line);border-radius:14px;padding:1.2rem 1.4rem;margin-bottom:1rem}
+.status-pill{display:inline-block;padding:.25rem .8rem;border-radius:100px;font-size:.76rem;font-weight:700}
+.status-pill.yeni{background:#fdf6d6;color:var(--primary-text)}
+.status-pill.hazirlaniyor{background:#fff4e5;color:#b45309}
+.status-pill.kargoda{background:#e7f0ff;color:#1d4ed8}
+.status-pill.teslim{background:#e7f7ec;color:#15803d}
+.status-pill.iptal{background:#fdeaea;color:#b91c1c}
+
+/* mini empty / success */
+.empty-state{text-align:center;padding:60px 0}
+.empty-state i{font-size:4rem;color:var(--line);margin-bottom:1rem;display:block}
+.empty-state h3{margin-bottom:.6rem}
+.empty-state p{color:var(--gray);margin-bottom:1.6rem}
+.order-success-icon{width:96px;height:96px;border-radius:50%;background:var(--soft-2);color:var(--primary-text);font-size:3rem;display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem}
+.alert-soft{background:var(--soft-2);border:1px solid var(--line);border-radius:14px;padding:1rem 1.2rem;color:var(--primary-dark);font-size:.92rem}
+
+/* WhatsApp float */
+.wa-float{position:fixed;right:20px;bottom:20px;width:56px;height:56px;border-radius:50%;background:#25d366;color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.7rem;box-shadow:0 10px 30px -8px rgba(37,211,102,.6);z-index:900;transition:.25s}
+.wa-float:hover{color:#fff;transform:translateY(-3px)}
