@@ -19,6 +19,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/magaza', [ShopController::class, 'index'])->name('shop');
 Route::get('/urun/{product}', [ShopController::class, 'show'])->name('product');
 
+Route::get('/markalar', [PageController::class, 'brands'])->name('brands');
 Route::get('/hizmetler', [PageController::class, 'services'])->name('services');
 Route::get('/hizmet/{service}', [PageController::class, 'serviceShow'])->name('service.show');
 Route::get('/blog', [PageController::class, 'blog'])->name('blog');

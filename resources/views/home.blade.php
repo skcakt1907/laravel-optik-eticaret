@@ -59,6 +59,34 @@
     </div>
 </section>
 
+{{-- Kayan marka şeridi --}}
+@if($brands->count())
+<section class="brand-marquee-wrap">
+    <div class="container">
+        <div class="section-head center">
+            <span class="mini">Markalar</span>
+            <h2>Çalıştığımız <span>Markalar</span></h2>
+        </div>
+    </div>
+    {{-- Şerit kesintisiz aksın diye liste iki kez basılıyor: ilk kopya
+         ekranın dışına çıkarken ikincisi içeri girer. aria-hidden ile
+         ekran okuyucuya aynı markalar iki kez okutulmuyor. --}}
+    <div class="brand-marquee" role="list">
+        <div class="brand-marquee-track">
+            @foreach($brands as $b)
+                <a href="{{ route('shop', ['marka' => $b->brand]) }}" class="brand-chip" role="listitem">{{ $b->brand }}</a>
+            @endforeach
+            @foreach($brands as $b)
+                <a href="{{ route('shop', ['marka' => $b->brand]) }}" class="brand-chip" aria-hidden="true" tabindex="-1">{{ $b->brand }}</a>
+            @endforeach
+        </div>
+    </div>
+    <div class="container text-center" style="margin-top:26px">
+        <a href="{{ route('brands') }}" class="btn-line">Tüm Markalar</a>
+    </div>
+</section>
+@endif
+
 {{-- Öne çıkan ürünler --}}
 @if($featured->count())
 <section>

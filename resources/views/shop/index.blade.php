@@ -1,14 +1,30 @@
 @extends('layouts.app')
-@section('title', ($activeCat->name ?? 'Mağaza') . ' — ' . setting('site_adi'))
+@section('title', trim(implode(' ', array_filter([$activeBrand ?? null, $activeGender ?? null, $activeCat->name ?? 'Mağaza']))) . ' — ' . setting('site_adi'))
 
 @section('content')
 <section class="page-head">
     <div class="container">
-        <h1>{{ $activeCat->name ?? 'Tüm Ürünler' }}</h1>
+        @php
+            // Başlık seçili filtreleri yansıtsın: "Ray-Ban Güneş Gözlüğü",
+            // "Unisex Numaralı Gözlük" gibi okunur bir başlık üretir.
+            $baslikParcalari = array_filter([$activeBrand, $activeGender, $activeCat?->name]);
+            $sayfaBaslik = $baslikParcalari ? implode(' ', $baslikParcalari) : 'Tüm Ürünler';
+        @endphp
+        <h1>{{ $sayfaBaslik }}</h1>
         <nav><ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ route('home') }}">Anasayfa</a></li>
             <li class="breadcrumb-item"><a href="{{ route('shop') }}">Mağaza</a></li>
-            @if($activeCat)<li class="breadcrumb-item active">{{ $activeCat->name }}</li>@endif
+            @if($activeCat)
+                <li class="breadcrumb-item {{ $activeBrand || $activeGender ? '' : 'active' }}">
+                    @if($activeBrand || $activeGender)
+                        <a href="{{ route('shop', ['kategori' => $activeCat->slug]) }}">{{ $activeCat->name }}</a>
+                    @else
+                        {{ $activeCat->name }}
+                    @endif
+                </li>
+            @endif
+            @if($activeBrand)<li class="breadcrumb-item active">{{ $activeBrand }}</li>@endif
+            @if($activeGender && !$activeBrand)<li class="breadcrumb-item active">{{ $activeGender }}</li>@endif
         </ol></nav>
     </div>
 </section>
@@ -29,9 +45,40 @@
                         @endforeach
                     </ul>
 
+                    {{-- Cinsiyet (Unisex dahil). Kategori değil, ürün özelliği. --}}
+                    @if($genders->count())
+                        <h5>Cinsiyet</h5>
+                        <ul class="f-list">
+                            <li><a href="{{ route('shop', array_merge(request()->except(['cinsiyet','page']), [])) }}"
+                                   class="{{ !$activeGender ? 'active' : '' }}">Tümü</a></li>
+                            @foreach($genders as $g)
+                                <li><a href="{{ route('shop', array_merge(request()->except('page'), ['cinsiyet' => $g->cinsiyet])) }}"
+                                       class="{{ $activeGender === $g->cinsiyet ? 'active' : '' }}">
+                                    {{ $g->cinsiyet }} <span>{{ $g->adet }}</span>
+                                </a></li>
+                            @endforeach
+                        </ul>
+                    @endif
+
+                    {{-- Markalar. Kategori seçiliyse sadece o kategorinin markaları
+                         listelenir (ör. Güneş Gözlüğü içinde marka marka ayrım). --}}
+                    @if($brands->count())
+                        <h5>{{ $activeCat ? $activeCat->name . ' Markaları' : 'Markalar' }}</h5>
+                        <ul class="f-list">
+                            <li><a href="{{ route('shop', array_merge(request()->except(['marka','page']), [])) }}"
+                                   class="{{ !$activeBrand ? 'active' : '' }}">Tümü</a></li>
+                            @foreach($brands as $b)
+                                <li><a href="{{ route('shop', array_merge(request()->except('page'), ['marka' => $b->brand])) }}"
+                                       class="{{ $activeBrand === $b->brand ? 'active' : '' }}">
+                                    {{ $b->brand }} <span>{{ $b->adet }}</span>
+                                </a></li>
+                            @endforeach
+                        </ul>
+                    @endif
+
                     <h5>Arama</h5>
                     <form action="{{ route('shop') }}" method="GET">
-                        @if($activeCat)<input type="hidden" name="kategori" value="{{ $activeCat->slug }}">@endif
+                        {{-- Arama her zaman TÜM üründe arar (kategoriyle sınırlama yok) --}}
                         <div class="input-group">
                             <input type="text" name="q" value="{{ request('q') }}" class="form-control" placeholder="Ürün ara..." style="border-radius:100px 0 0 100px;border:1px solid var(--line)">
                             <button class="btn btn-orange" style="border-radius:0 100px 100px 0"><i class="bi bi-search"></i></button>

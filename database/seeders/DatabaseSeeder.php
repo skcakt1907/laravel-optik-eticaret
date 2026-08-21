@@ -135,12 +135,13 @@ class DatabaseSeeder extends Seeder
         }
 
         /* ---------------- Hizmetler ---------------- */
+        // NOT: Müşteri isteğiyle hizmet listesi 4 maddeye indirildi.
+        // "Güneş Gözlüğü" ve "Çocuk Gözlükleri" hizmet KARTI olarak kaldırıldı;
+        // ikisi de mağazada KATEGORİ olarak duruyor (yukarıdaki $cats'e bak).
         $services = [
             ['Ücretsiz Göz Tahlili', 'ucretsiz-goz-tahlili', 'bi-eye', 'Bilgisayarlı cihazlarla hassas numara ölçümü.'],
             ['Numaralı Gözlük', 'numarali-gozluk-hizmet', 'bi-eyeglasses', 'Reçetenize uygun cam ve çerçeve seçimi.'],
-            ['Güneş Gözlüğü', 'gunes-gozlugu-hizmet', 'bi-sun', 'UV korumalı, polarize dünya markaları.'],
             ['Kontakt Lens', 'kontakt-lens-hizmet', 'bi-circle', 'Günlük, aylık ve renkli lens uygulaması.'],
-            ['Çocuk Gözlükleri', 'cocuk-gozlukleri', 'bi-emoji-smile', 'Dayanıklı ve güvenli çocuk çerçeveleri.'],
             ['Cam Değişimi & Tamir', 'cam-degisimi-tamir', 'bi-tools', 'Hızlı cam değişimi ve çerçeve onarımı.'],
         ];
         $n = 1;

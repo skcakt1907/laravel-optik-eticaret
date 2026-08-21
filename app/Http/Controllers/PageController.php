@@ -27,6 +27,17 @@ class PageController extends Controller
         return view('pages.services', ['services' => Service::active()->orderBy('sira')->get()]);
     }
 
+    /**
+     * Markalar sayfası — sitedeki tüm markaları tek listede gösterir.
+     * Her marka mağazadaki filtreli listesine (?marka=X) gider.
+     */
+    public function brands()
+    {
+        return view('pages.brands', [
+            'brands' => \App\Models\Product::markaListesi(),
+        ]);
+    }
+
     public function serviceShow(Service $service)
     {
         abort_unless($service->durum, 404);

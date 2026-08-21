@@ -15,8 +15,12 @@
                         @foreach($navCategories as $cat)
                             <a href="{{ route('shop', ['kategori' => $cat->slug]) }}"><i class="bi {{ $cat->icon ?: 'bi-eyeglasses' }}"></i> {{ $cat->name }}</a>
                         @endforeach
+                        {{-- Cinsiyet ayrı bir kategori değil, ürün özelliği; menüde
+                             kategori gibi görünsün diye filtreli mağaza linki. --}}
+                        <a href="{{ route('shop', ['cinsiyet' => 'Unisex']) }}"><i class="bi bi-people"></i> Unisex</a>
                     </div>
                 </li>
+                <li class="nav-item"><a class="nav-link {{ request()->routeIs('brands') ? 'active' : '' }}" href="{{ route('brands') }}">Markalar</a></li>
                 <li class="nav-item"><a class="nav-link {{ request()->routeIs('services*') ? 'active' : '' }}" href="{{ route('services') }}">Hizmetler</a></li>
                 <li class="nav-item"><a class="nav-link {{ request()->routeIs('blog*') ? 'active' : '' }}" href="{{ route('blog') }}">Blog</a></li>
                 <li class="nav-item"><a class="nav-link {{ request()->routeIs('about') ? 'active' : '' }}" href="{{ route('about') }}">Hakkımızda</a></li>
