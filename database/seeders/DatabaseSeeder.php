@@ -35,7 +35,7 @@ class DatabaseSeeder extends Seeder
             'telefon' => '0252 412 00 00',
             'whatsapp' => '905320000000',
             'eposta' => 'info@ornek-optik.com',
-            'adres' => 'Tepe Mah. Atatürk Cad. No:42, Marmaris / Muğla',
+            'adres' => 'Yalıkavak, Şeyhülislam Ömer Lütfi Caddesi No:21/I, 48990 Bodrum/Muğla',
             'instagram' => 'https://instagram.com',
             'facebook' => 'https://facebook.com',
             'kargo_ucreti' => '49.90',
