@@ -32,8 +32,9 @@ class DatabaseSeeder extends Seeder
         $ayarlar = [
             'site_adi' => 'Limon Optik',
             'site_aciklama' => 'Net görüş, şık tasarım. Numaralı gözlük, güneş gözlüğü ve kontakt lenste uzman optisyen kadromuzla yanınızdayız.',
-            'telefon' => '0252 412 00 00',
-            'whatsapp' => '905320000000',
+            'telefon' => '0533 570 54 63',
+            // wa.me linki icin ulke kodlu, isaretsiz bicim (bkz. layouts/app.blade.php)
+            'whatsapp' => '905335705463',
             'eposta' => 'info@ornek-optik.com',
             'adres' => 'Yalıkavak, Şeyhülislam Ömer Lütfi Caddesi No:21/I, 48990 Bodrum/Muğla',
             'instagram' => 'https://instagram.com',

@@ -16,7 +16,7 @@
     <div class="container">
         <div class="row g-4 mb-5">
             <div class="col-md-4"><div class="contact-info-card"><i class="bi bi-geo-alt"></i><h5>Adres</h5><p>{{ setting('adres') }}</p></div></div>
-            <div class="col-md-4"><div class="contact-info-card"><i class="bi bi-telephone"></i><h5>Telefon</h5><p><a href="tel:{{ setting('telefon') }}">{{ setting('telefon') }}</a></p></div></div>
+            <div class="col-md-4"><div class="contact-info-card"><i class="bi bi-telephone"></i><h5>Telefon</h5><p><a href="tel:{{ tel_link(setting('telefon')) }}">{{ setting('telefon') }}</a></p></div></div>
             <div class="col-md-4"><div class="contact-info-card"><i class="bi bi-envelope"></i><h5>E-Posta</h5><p><a href="mailto:{{ setting('eposta') }}">{{ setting('eposta') }}</a></p></div></div>
         </div>
 
@@ -58,7 +58,7 @@
             <div class="col-lg-5">
                 <div class="quote-call">
                     <div class="quote-call-icon"><i class="bi bi-telephone-fill"></i></div>
-                    <div><small>Hemen Arayın</small><a href="tel:{{ setting('telefon') }}">{{ setting('telefon') }}</a></div>
+                    <div><small>Hemen Arayın</small><a href="tel:{{ tel_link(setting('telefon')) }}">{{ setting('telefon') }}</a></div>
                 </div>
                 <ul class="quote-perks">
                     <li><i class="bi bi-eye"></i><div><strong>Ücretsiz Göz Tahlili</strong><span>Bilgisayarlı hassas ölçüm</span></div></li>

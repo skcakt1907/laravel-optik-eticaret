@@ -28,7 +28,7 @@
             <div class="col-lg-4 col-md-6">
                 <h5>İletişim</h5>
                 <div class="contact-li"><i class="bi bi-geo-alt"></i><span>{{ setting('adres') }}</span></div>
-                <div class="contact-li"><i class="bi bi-telephone"></i><a href="tel:{{ setting('telefon') }}">{{ setting('telefon') }}</a></div>
+                <div class="contact-li"><i class="bi bi-telephone"></i><a href="tel:{{ tel_link(setting('telefon')) }}">{{ setting('telefon') }}</a></div>
                 <div class="contact-li"><i class="bi bi-envelope"></i><a href="mailto:{{ setting('eposta') }}">{{ setting('eposta') }}</a></div>
             </div>
         </div>
