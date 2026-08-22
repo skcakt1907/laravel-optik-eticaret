@@ -11,7 +11,9 @@
                 <p>{{ setting('site_aciklama') }}</p>
                 <div class="hero-cta">
                     <a href="{{ route('shop') }}" class="btn btn-orange">Alışverişe Başla <i class="bi bi-arrow-right ms-2"></i></a>
-                    <a href="{{ route('contact') }}" class="btn btn-line">Ücretsiz Göz Tahlili</a>
+                    {{-- Eskiden "Ücretsiz Göz Tahlili" yazıyordu; hizmetler
+                         kaldırıldığı için nötr metne çevrildi (link aynı). --}}
+                    <a href="{{ route('contact') }}" class="btn btn-line">Bize Ulaşın</a>
                 </div>
             </div>
             <div class="col-lg-6">
@@ -33,7 +35,9 @@
                 <div class="col-md-3 col-6"><div class="meta-item"><i class="bi bi-truck"></i><div><strong>Ücretsiz Kargo</strong><small>{{ money(setting('kargo_bedava_limit')) }} üzeri</small></div></div></div>
                 <div class="col-md-3 col-6"><div class="meta-item"><i class="bi bi-arrow-repeat"></i><div><strong>Kolay İade</strong><small>14 gün içinde</small></div></div></div>
                 <div class="col-md-3 col-6"><div class="meta-item"><i class="bi bi-shield-check"></i><div><strong>Güvenli Ödeme</strong><small>3D Secure</small></div></div></div>
-                <div class="col-md-3 col-6"><div class="meta-item"><i class="bi bi-eye"></i><div><strong>Ücretsiz Tahlil</strong><small>Mağazamızda</small></div></div></div>
+                {{-- Eskiden "Ücretsiz Tahlil / Mağazamızda" idi; hizmetler
+                     kaldırıldığı için ürün odaklı bir rozetle değiştirildi. --}}
+                <div class="col-md-3 col-6"><div class="meta-item"><i class="bi bi-patch-check"></i><div><strong>Orijinal Ürün</strong><small>Garantili & faturalı</small></div></div></div>
             </div>
         </div>
     </div>
@@ -134,7 +138,10 @@
 </section>
 @endif
 
-{{-- Hizmetler --}}
+{{-- Hizmetler — müşteri isteğiyle kaldırıldı.
+     Bölüm silinmedi, AKTİF hizmet yoksa hiç basılmıyor: admin'den bir hizmet
+     aktif edilirse geri gelir. Boş bir başlık kalmasın diye koşul burada. --}}
+@if($services->count())
 <section class="services-grid">
     <div class="container">
         <div class="section-head center">
@@ -155,6 +162,7 @@
         </div>
     </div>
 </section>
+@endif
 
 {{-- Yorumlar --}}
 @if($testimonials->count())

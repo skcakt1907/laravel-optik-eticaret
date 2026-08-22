@@ -135,9 +135,13 @@ class DatabaseSeeder extends Seeder
         }
 
         /* ---------------- Hizmetler ---------------- */
-        // NOT: Müşteri isteğiyle hizmet listesi 4 maddeye indirildi.
-        // "Güneş Gözlüğü" ve "Çocuk Gözlükleri" hizmet KARTI olarak kaldırıldı;
-        // ikisi de mağazada KATEGORİ olarak duruyor (yukarıdaki $cats'e bak).
+        // MÜŞTERİ İSTEĞİYLE HİZMETLER TAMAMEN KALDIRILDI.
+        // Tanımlar silinmedi, hepsi durum=false ile kuruluyor: site tarafında
+        // hiçbir yerde görünmezler (anasayfa bölümü, menü, footer ve sitemap
+        // "aktif hizmet var mı" koşuluna bağlı), ama admin panelinden biri
+        // aktif edilirse tüm site kendiliğinden geri gösterir.
+        // Hizmet olarak kalkan "Güneş Gözlüğü"/"Çocuk Gözlükleri" mağazada
+        // KATEGORİ olarak duruyor (yukarıdaki $cats'e bak) — onlar etkilenmedi.
         $services = [
             ['Ücretsiz Göz Tahlili', 'ucretsiz-goz-tahlili', 'bi-eye', 'Bilgisayarlı cihazlarla hassas numara ölçümü.'],
             ['Numaralı Gözlük', 'numarali-gozluk-hizmet', 'bi-eyeglasses', 'Reçetenize uygun cam ve çerçeve seçimi.'],
@@ -149,7 +153,7 @@ class DatabaseSeeder extends Seeder
             Service::updateOrCreate(['slug' => $sl], [
                 'title' => $t, 'icon' => $ic, 'summary' => $sum,
                 'content' => $sum . ' Uzman optisyen kadromuzla en doğru çözümü birlikte belirliyoruz.',
-                'sira' => $n++, 'durum' => true,
+                'sira' => $n++, 'durum' => false,
             ]);
         }
 

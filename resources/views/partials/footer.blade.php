@@ -21,7 +21,7 @@
             <div class="col-lg-2 col-md-6 col-6">
                 <h5>Kurumsal</h5>
                 <a href="{{ route('about') }}">Hakkımızda</a>
-                <a href="{{ route('services') }}">Hizmetler</a>
+                @if($navHasServices ?? false)<a href="{{ route('services') }}">Hizmetler</a>@endif
                 <a href="{{ route('blog') }}">Blog</a>
                 <a href="{{ route('contact') }}">İletişim</a>
             </div>

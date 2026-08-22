@@ -15,7 +15,15 @@ class SitemapController extends Controller
         // doğrudan ekleme yapıyoruz (referans sorununu önlemek için).
         $urls = [];
 
-        foreach ([route('home'), route('shop'), route('services'), route('blog'), route('about'), route('contact')] as $loc) {
+        $sabitSayfalar = [route('home'), route('shop'), route('brands'), route('blog'), route('about'), route('contact')];
+
+        // Hizmetler sayfası ancak aktif hizmet varsa sitemap'e girer —
+        // hizmetler kaldırıldığında Google'a boş sayfa bildirilmesin.
+        if (Service::where('durum', true)->exists()) {
+            $sabitSayfalar[] = route('services');
+        }
+
+        foreach ($sabitSayfalar as $loc) {
             $urls[] = ['loc' => $loc, 'lastmod' => null];
         }
 

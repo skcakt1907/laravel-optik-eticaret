@@ -21,6 +21,11 @@ class AppServiceProvider extends ServiceProvider
         View::composer('*', function ($view) {
             $view->with('navCategories', Category::active()->whereNull('parent_id')->orderBy('sira')->get());
             $view->with('cartCount', Cart::count());
+            // Hizmet bölümü/linkleri yalnızca AKTİF hizmet varsa gösterilir.
+            // Müşteri isteğiyle tüm hizmetler kaldırıldı; menüde ölü link ve
+            // anasayfada başlıklı ama boş bir bölüm kalmasın diye koşullu.
+            // Admin'den bir hizmet aktif edilirse her yer kendiliğinden geri gelir.
+            $view->with('navHasServices', \App\Models\Service::active()->exists());
         });
 
         // Şifre sıfırlama e-postasını Türkçeleştir
