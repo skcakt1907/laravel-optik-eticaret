@@ -28,3 +28,7 @@ Thumbs.db
 
 /test-results
 /playwright-report
+
+# Baska projelerin gecici test scriptleri buraya birikmis (isortagim, ilan,
+# tema, domain testleri). Bu projeye ait degiller, surum takibine girmesinler.
+/_*.cjs
